@@ -1,24 +1,25 @@
 Package.describe({
-  name: 'gustawdaniel:reactive-set',
-  version: '0.0.1',
-  // Brief, one-line summary of the package.
-  summary: 'Reactive Set - object allowing store unique values of any type',
-  // URL to the Git repository containing the source code for this package.
-  git: '',
-  // By default, Meteor will default to using README.md for documentation.
-  // To avoid submitting documentation, set this field to null.
-  documentation: 'README.md'
+    name: 'gustawdaniel:reactive-set',
+    version: '0.0.1',
+    summary: 'Reactive Set - object allowing store unique values of any type',
+    git: 'https://github.com/gustawdaniel/reactive-set.git',
+    documentation: 'README.md'
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.6.0.1');
-  api.use('ecmascript');
-  api.mainModule('reactive-set.js');
+    api.export('ReactiveSet');
+    api.versionsFrom('1.6.0.1');
+    api.use([
+        'ecmascript',
+        'check',
+        'tracker'
+    ]);
+    api.mainModule('reactive-set.js');
 });
 
 Package.onTest(function(api) {
-  api.use('ecmascript');
-  api.use('tinytest');
-  api.use('gustawdaniel:reactive-set');
-  api.mainModule('reactive-set-tests.js');
+    api.use('ecmascript');
+    api.use('tinytest');
+    api.use('gustawdaniel:reactive-set');
+    api.mainModule('reactive-set-tests.js');
 });
