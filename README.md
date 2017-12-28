@@ -58,6 +58,13 @@ You can use this on server side
     
     });
 
+#### Properties
+
+It has properties
+
++ constructor
++ size
+
 #### Methods
 
 It has methods:

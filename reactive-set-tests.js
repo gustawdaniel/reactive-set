@@ -8,9 +8,9 @@ import { ReactiveSet } from "meteor/gustawdaniel:reactive-set";
 // Write your tests here!
 // Here is an example.
 Tinytest.add('reactive-set - has working methods: add, has', function (test) {
-  let set = new ReactiveSet();
-  set.add(5);
-  test.equal(set.has(5), true);
+    let set = new ReactiveSet();
+    set.add(5);
+    test.equal(set.has(5), true);
 });
 
 Tinytest.add('reactive-set - is reactive in get if add is called', function (test) {
@@ -26,4 +26,12 @@ Tinytest.add('reactive-set - is reactive in get if add is called', function (tes
 
     Tracker.flush();
     test.equal(counter, 1);
+});
+
+Tinytest.add('reactive-set - properties size and constructor', function (test) {
+    let set = new ReactiveSet();
+    set.add(5);
+
+    test.equal(set.size, 1);
+    test.equal(typeof set.constructor, 'function');
 });

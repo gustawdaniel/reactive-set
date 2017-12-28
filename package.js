@@ -1,6 +1,6 @@
 Package.describe({
     name: 'gustawdaniel:reactive-set',
-    version: '0.0.1',
+    version: '0.0.2',
     summary: 'Reactive Set - object allowing store unique values of any type',
     git: 'https://github.com/gustawdaniel/reactive-set.git',
     documentation: 'README.md'
