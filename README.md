@@ -64,12 +64,18 @@ It has methods:
 
     ( add, get, set, has )
 
+# Contribution
+
+If you are interested to contribute, then I typed simple instruction of install this
+package locally, run tests and use it in exemplary meteor app. This docs is placed in 
+[wiki](https://github.com/gustawdaniel/reactive-set/wiki/Contribution).
+
 # TODO: 
 
 + [ ] Add rest of methods
-+ [ ] Add contribution readme
-+ [ ] Add continuous integration  
-+ [ ] Register in atmosphere
++ [x] Add contribution readme
++ [x] Add continuous integration  
++ [x] Register in atmosphere
 
 ----
 
