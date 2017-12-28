@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/gustawdaniel/reactive-set.svg?branch=master)](https://travis-ci.org/gustawdaniel/reactive-set)
+
 # Install
 
     meteor add gustawdaniel:reactive-set
