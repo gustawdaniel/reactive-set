@@ -34,6 +34,28 @@ Show what's been added to the array you created in your template
         }
     });
 
+#### Server side
+
+You can use this on server side
+
+    import { Meteor } from 'meteor/meteor';
+    import { ReactiveSet } from 'meteor/gustawdaniel:reactive-set'
+    
+    Meteor.startup(() => {
+        let set = new ReactiveSet();
+    
+        let counter = 0;
+    
+        setInterval(function () {
+            set.add(counter++);
+        },1000);
+    
+        Tracker.autorun(function () {
+            console.log(set.get())
+        });
+    
+    });
+
 Further reading about Set object
 
 > https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
