@@ -1,9 +1,8 @@
-// Write your package code here!
-
-// Variables exported by this module can be imported by other packages and
-// applications. See reactive-set-tests.js for an example of importing.
-export const name = 'reactive-set';
-
+/**
+ *
+ * @param value
+ * @constructor
+ */
 export const ReactiveSet = function (value) {
     check(value, Match.Optional(Set));
 
@@ -12,7 +11,10 @@ export const ReactiveSet = function (value) {
     this._dep = new Tracker.Dependency;
 };
 
-
+/**
+ *
+ * @returns {*|Set}
+ */
 ReactiveSet.prototype.get = function() {
     if (Tracker.active) {
         this._dep.depend();
