@@ -56,6 +56,21 @@ You can use this on server side
     
     });
 
+#### Methods
+
+It has methods:
+
+    ( add, get, set, has )
+
+# TODO: 
+
++ [ ] Add rest of methods
++ [ ] Add contribution readme
++ [ ] Add continuous integration  
++ [ ] Register in atmosphere
+
+----
+
 Further reading about Set object
 
 > https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
