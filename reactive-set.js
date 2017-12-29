@@ -11,6 +11,15 @@ export const ReactiveSet = function (value) {
     this._dep = new Tracker.Dependency;
 };
 
+ReactiveSet.prototype = {
+    get size() {
+        if (Tracker.active) {
+            this._dep.depend();
+        }
+        return this._set.size;
+    }
+};
+
 /**
  *
  * @returns {*|Set}
@@ -43,3 +52,5 @@ ReactiveSet.prototype.add = function(elem) {
         this._dep.changed();
     }
 };
+
+ReactiveSet.prototype.constructor = ReactiveSet;

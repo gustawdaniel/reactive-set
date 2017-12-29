@@ -58,18 +58,47 @@ You can use this on server side
     
     });
 
+#### Properties
+
+It has properties
+
++ constructor
++ size
+
 #### Methods
 
 It has methods:
 
     ( add, get, set, has )
 
+# Contribution
+
+If you are interested to contribute, then I typed simple instruction of install this
+package locally, run tests and use it in exemplary meteor app. This docs is placed in 
+[wiki](https://github.com/gustawdaniel/reactive-set/wiki/Contribution).
+
 # TODO: 
 
 + [ ] Add rest of methods
-+ [ ] Add contribution readme
-+ [ ] Add continuous integration  
-+ [ ] Register in atmosphere
++ [x] Add contribution readme
++ [x] Add continuous integration  
++ [x] Register in atmosphere
+
+Planned methods list:
+
+| type     | name        | action  |
+|----------|-------------|---------|
+| property | constructor | no      |
+| property | size        | depend  |
+| method   | add         | changed |
+| method   | clear       | changed |
+| method   | delete      | changed |
+| method   | entries     | depend  |
+| method   | forEach     | depend  |
+| method   | has         | depend  |
+| method   | heys        | depend  |
+| method   | values      | depend  |
+| method   | @@iterator  | depend  |
 
 ----
 
