@@ -1,0 +1,66 @@
+If you want to contribute follow these steps:
+
+1) clone this repo to your local computer, assume this is in directory `/path_to_package/reactive-set`
+2) create indepenedend meteor app, assume in directory `/meteor_app`
+
+3) Replace `/meteor_app/server/main.js` content by the following code
+
+```
+    import { Meteor } from 'meteor/meteor';
+    import { ReactiveSet } from 'meteor/gustawdaniel:reactive-set'
+    
+    Meteor.startup(() => {
+        let set = new ReactiveSet();
+    
+        let counter = 0;
+    
+        setInterval(function () {
+            set.add(counter++);
+        },1000);
+    
+        Tracker.autorun(function () {
+            console.log(set.get())
+        });
+    
+    });
+```
+
+4) Create packages directory and create symlink
+
+```
+    mkdir /meteor_app/packages
+    ln -s /path_to_package/reactive-set /meteor_app/packages
+```
+
+5) Cd to meteor app and add package
+
+```
+    meteor add gustawdaniel:reactive-set
+```
+
+6) Run meteor
+
+```
+    meteor
+```
+
+You should see something like this (click to see full video)
+
+[![meteor run](https://s9.postimg.org/stjj3uowv/Zrzut_ekranu_z_2017-12-28_23-48-15.png)](https://www.dropbox.com/s/e2i7fw8ncv892hy/rec_reduced.ogv?dl=1)
+
+7) Close meteor and add package for tests, next run tests
+
+```
+    meteor add tinytest
+    meteor test-packages packages/reactive-set
+```
+
+On port 3000 you should see in browser image like this
+
+![test passed](http://i.imgur.com/gP23PYv.png)
+
+If everything ok, you can chagne code in package, test it and test usage in exemplary meteor app.
+
+Do not forget about node in version 8. 
+
+Any question? Do not hesitate to write to me or create issue.
