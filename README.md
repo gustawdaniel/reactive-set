@@ -58,18 +58,23 @@ You can use this on server side
     
     });
 
-#### Properties
+#### Properties and methods
 
-It has properties
+Package implements methods and properties from list:
 
-+ constructor
-+ size
-
-#### Methods
-
-It has methods:
-
-    ( add, get, set, has )
+| type     | name        | action  | implemented |
+|----------|-------------|---------|-------------|
+| property | constructor | no      | yes         |
+| property | size        | depend  | yes         |
+| method   | add         | changed | yes         |
+| method   | clear       | changed | yes         |
+| method   | delete      | changed | yes         |
+| method   | entries     | depend  | yes         |
+| method   | forEach     | depend  | yes         |
+| method   | has         | depend  | yes         |
+| method   | keys        | depend  | yes         |
+| method   | values      | depend  | yes         |
+| method   | @@iterator  | depend  | no          |
 
 # Contribution
 
@@ -77,28 +82,16 @@ If you are interested to contribute, then I typed simple instruction of install 
 package locally, run tests and use it in exemplary meteor app. This docs is placed in 
 [wiki](https://github.com/gustawdaniel/reactive-set/wiki/Contribution).
 
-# TODO: 
+# TODO in v0.0.3: 
 
-+ [ ] Add rest of methods
-+ [x] Add contribution readme
-+ [x] Add continuous integration  
-+ [x] Register in atmosphere
++ [ ] Add Support form `@@iterator`
++ [ ] Test forEach and depend methods
++ [ ] Better describe get and set methods
++ [ ] Test invalid input of methods and constructor
 
-Planned methods list:
+# TODO in v0.0.4: 
 
-| type     | name        | action  |
-|----------|-------------|---------|
-| property | constructor | no      |
-| property | size        | depend  |
-| method   | add         | changed |
-| method   | clear       | changed |
-| method   | delete      | changed |
-| method   | entries     | depend  |
-| method   | forEach     | depend  |
-| method   | has         | depend  |
-| method   | heys        | depend  |
-| method   | values      | depend  |
-| method   | @@iterator  | depend  |
++ [ ] Support for methods `isSuperset`, `union`, `intersection`, `difference`.
 
 ----
 
