@@ -8,7 +8,18 @@ export const ReactiveSet = function (value) {
 
     this._set = value || new Set();
 
+    this._dependend_methods = ['has', 'entries', 'forEach', 'keys', 'values'];
+
+    this._changing_methods = ['add', 'clear', 'delete'];
+
     this._dep = new Tracker.Dependency;
+
+    for(let i=0;i<=this._changing_methods.length; i++){
+        this._addWrappedPrototypeChangingMethod(this._changing_methods[i]);
+    }
+    for(let i=0;i<=this._dependend_methods.length; i++){
+        this._addWrappedPrototypeDependentMethod(this._dependend_methods[i]);
+    }
 };
 
 ReactiveSet.prototype = {
@@ -20,10 +31,29 @@ ReactiveSet.prototype = {
     }
 };
 
-/**
- *
- * @returns {*|Set}
- */
+ReactiveSet.prototype._addWrappedPrototypeChangingMethod = function(method) {
+    let self = this;
+    this[method] = function() {
+        console.log(arguments);
+        if(
+            ( method === 'add'    && !self._set.has(arguments[0]) ) || // add not existing
+            ( method === 'delete' &&  self._set.has(arguments[0]) ) || // remove existing
+            ( method === 'clear'  &&  self._set.size > 0 )          // clear not empty
+        ) { self._dep.changed(); }
+        return Set.prototype[method].apply(self._set, arguments);
+    };
+};
+
+ReactiveSet.prototype._addWrappedPrototypeDependentMethod = function(method) {
+    let self = this;
+    this[method] = function() {
+        if (Tracker.active) {
+            self._dep.depend();
+        }
+        return Set.prototype[method].apply(self._set, arguments);
+    };
+};
+
 ReactiveSet.prototype.get = function() {
     if (Tracker.active) {
         this._dep.depend();
@@ -31,12 +61,12 @@ ReactiveSet.prototype.get = function() {
     return this._set;
 };
 
-ReactiveSet.prototype.has = function(elem) {
-    if (Tracker.active) {
-        this._dep.depend();
-    }
-    return this._set.has(elem);
-};
+// ReactiveSet.prototype.has = function(elem) {
+//     if (Tracker.active) {
+//         this._dep.depend();
+//     }
+//     return this._set.has(elem);
+// };
 
 ReactiveSet.prototype.set = function(set) {
     check(set, Match.Optional(Set));
@@ -46,11 +76,11 @@ ReactiveSet.prototype.set = function(set) {
     }
 };
 
-ReactiveSet.prototype.add = function(elem) {
-    if (!this._set.has(elem)) {
-        this._set.add(elem);
-        this._dep.changed();
-    }
-};
+// ReactiveSet.prototype.add = function(elem) {
+//     if (!this._set.has(elem)) {
+//         this._set.add(elem);
+//         this._dep.changed();
+//     }
+// };
 
 ReactiveSet.prototype.constructor = ReactiveSet;
